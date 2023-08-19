@@ -1,7 +1,10 @@
 const ListItem = (props) => {
   return (
     <li key={props.idx}>
-      {props.item} <span className="close">×</span>{' '}
+      {props.item}{' '}
+      <span className="close" onClick={() => props.deleteItem(props.idx)}>
+        ×
+      </span>{' '}
     </li>
   );
 };
