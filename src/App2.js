@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Header from './components/Header';
 import List from './components/List';
 
-const App = () => {
+function App() {
   const listItems = [
     'Hit the gym',
     'Pay bills',
@@ -11,21 +11,29 @@ const App = () => {
     'Read a book',
     'Organize office',
   ];
+
+  {
+    /** PART 2: Add listItems into state*/
+  }
   const [items, setItems] = useState(listItems);
 
-  const addHandler = (item) => {
+  const clickAddHandler = (item) => {
+    console.log('Hey you clicked!!!', item);
     setItems([...items, item]);
   };
-  const deleteHandler = (idx) => {
+
+  const clickDeleteHandler = (idx) => {
     items.splice(idx, 1);
     setItems([...items]);
   };
 
   return (
     <>
-      <Header title="My Note" addHandler={addHandler} />
-      <List items={items} deleteHandler={deleteHandler} />
+      {/** PART 2: Pass clickHandler to the Header */}
+      <Header title="My Notes" clickAddHandler={clickAddHandler} />
+      <List items={items} clickDeleteHandler={clickDeleteHandler} />
     </>
   );
-};
+}
+
 export default App;

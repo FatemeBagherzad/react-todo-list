@@ -1,12 +1,18 @@
-const ListItem = (props) => {
+const ListItem = ({ item, idx, deleteHandler }) => {
   return (
-    <li key={props.idx}>
-      {props.item}{' '}
-      <span className="close" onClick={() => props.deleteItem(props.idx)}>
-        ×
-      </span>{' '}
-    </li>
+    <>
+      <li>
+        {item}{' '}
+        <span
+          className="close"
+          onClick={(idx) => {
+            deleteHandler(idx);
+          }}
+        >
+          ×
+        </span>
+      </li>
+    </>
   );
 };
-
 export default ListItem;

@@ -1,34 +1,26 @@
 import { useState } from 'react';
 
-const Header = (props) => {
-  {
-    /** PART 1 : Add Click event*/
-  }
-  const addItem = () => {
-    props.clickAddHandler(note);
-  };
+const Header = ({ title, addHandler }) => {
+  const [inputv, setInputv] = useState('');
 
-  {
-    /** PART 2 : Store the input Text in state*/
-  }
-  const [note, setNote] = useState('');
+  const addinputValue = (event) => {
+    console.log(event.target.value);
+    setInputv(event.target.value);
+  };
 
   return (
     <header className="header">
-      <h2 style={{ margin: '5px' }}>{props.title}</h2>
+      <h2 style={{ margin: '5px' }}>{title}</h2>
       <input
         type="text"
+        placeholder="Tile"
         id="myInput"
-        placeholder="Title..."
-        onChange={(evt) => {
-          setNote(evt.target.value);
-        }}
+        onChange={addinputValue}
       />
-      <span className="addBtn" onClick={addItem}>
+      <span className="addBtn" onClick={() => addHandler(inputv)}>
         Add
       </span>
     </header>
   );
 };
-
 export default Header;
